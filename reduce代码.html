@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+
+<script>
+  // let arr = [1,9,2,8,3,7,4,6,5,5]
+  //accumulator 累计器
+  //currentValue 当前值
+  //currentIndex 当前索引
+  //array 数组
+  // let sum = arr.reduce(function (accumulator,currentValue,currentIndex,array) {
+  //   console.log(accumulator,currentValue,currentIndex)
+  //   return accumulator+currentValue
+  // })
+  // console.log(sum) //------50
+  
+  //箭头函数
+  // let sum2=[0, 1, 2, 3, 4].reduce((prev, curr) => prev + curr )
+  // console.log(sum2) -----10
+  
+//--------------------------------------------------------------------------------------
+  //回调函数，带有初始值作为reduce()方法的第二个参数，将作为累加值即acc的第一次传入参数传入；则curr当前值从数组第一个数开始；
+  // let sum = arr.reduce(function(acc,curr){
+  //   return acc+curr
+  // },100)
+  // console.log(sum) ------150
+
+  //箭头函数，带有初始值作为reduce()方法的第二个参数
+  // let total = [ 0, 1, 2, 3 ].reduce(( acc, cur ) => acc + cur, 0);
+  // console.log(total) -------6
+  
+  // -------------------------------------------------------------------------------------
+  // let arr1=[0,1]
+  // let sum = arr1.reduce(function (accumulator,currentValue,currentIndex) {
+  //   console.log("累加值"+accumulator,"当前值"+currentValue,"索引"+currentIndex)
+  //   return accumulator+currentValue
+  // },50)
+  // console.log(sum) //------50
+  
+  //---------------------------------------------------------------------------------------------------
+  //累加对象数组里的值
+  // let arr = [{x:1},{x:2},{x:3}]
+  // let sum = arr.reduce(function (acc,curr){
+  //   console.log("累计器："+acc,"当前值："+curr)
+  //   return acc + curr.x
+  // },0)
+  // console.log(sum)
+  
+  //---------------------------------------------------------------------------------------------------
+  //将二维数组转化为一维
+  // let arr = [[0,1],[2,3],[4,5]]
+  // let newArr = arr.reduce(function (acc,curr){
+  //   console.log("累计器："+acc,"当前值："+curr)
+  //   console.log(Object.prototype.toString.call(acc))
+  //   return acc.concat(curr)
+  // },[])
+  // console.log(newArr)
+
+  //计算数组中每个元素出现的次数
+  // let name = ["Tom","Tomb","kobe","Tomb","Tom","wade","kobe","Tomb"]
+  // let result = name.reduce(function (sumResult,name){
+  //   console.log("累计器："+sumResult,"当前值："+name)
+  //   if(name in sumResult){
+  //     sumResult[name] +=1
+  //   }else{
+  //     sumResult[name] = 1
+  //   }
+  //   return sumResult
+  // },{})
+  // console.log(result)
+
+  let arr = [1,10,5,6,4,5,7,8,9,3,2,1,10,6,7]
+  //调用sort()；对源数组进行排序（阿斯科码排序）结果：[1, 1, 10, 10, 2, 3, 4, 5, 5, 6 , 6, 7, 7, 8, 9]
+  //用reduce()方法进行去重
+  let newArr = arr.sort().reduce(function (everyResult,item){
+    console.log("累计器："+everyResult,"当前值："+item)
+    //用新数组 即everyResult,其中的最后一项与当前值进行比较，若不相等则添加到数组的最后
+    if(everyResult[everyResult.length-1] !==item){
+      everyResult.push(item)
+    }
+    return everyResult
+  },[])
+  console.log(newArr)
+
+</script>
+</body>
+</html>
